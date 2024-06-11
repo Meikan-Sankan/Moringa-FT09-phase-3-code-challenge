@@ -1,8 +1,11 @@
 import sqlite3
 
-DATABASE_NAME = './database/magazine.db'
+def create_connection():
+    conn = None
+    try:
+        conn = sqlite3.connect('magazine.db')
+        print("Connection to SQLite DB successful")
+    except sqlite3.Error as e:
+        print(f"The error '{e}' occurred")
 
-def get_db_connection():
-    conn = sqlite3.connect(DATABASE_NAME)
-    conn.row_factory = sqlite3.Row
     return conn
